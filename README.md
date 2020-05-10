@@ -3,7 +3,7 @@ The gut mycobiome-bacteriome interface is significantly impacted by subsistence 
 
 # The gut mycobiome-bacteriome interface is significantly impacted by subsistence strategy in humans and nonhuman primates
 
-ITS2 for fungal composition and v4 region of 16S rRNA for bacterial composition were amplified and processed through standard Qiime2 pipeline after adapter removal and quality filtering. For both bacterial and fungal quantification almost similar steps which we have used before (https://github.com/ashoks773/Oral-microbiome-16S) were used.
+ITS2 for fungal composition and v4 region of 16S rRNA for bacterial composition were amplified and processed through standard Qiime2 pipeline after adapter removal and quality filtering. For both bacterial and fungal quantification almost similar steps which we have used before (https://github.com/ashoks773/Oral-microbiome-16S) were followed.
 
 The following files were used for downstream statistical analysis
 1. Bacterial and fungal ASV abundances
