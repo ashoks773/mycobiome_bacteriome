@@ -12,7 +12,7 @@ The following files were used for downstream statistical analysis
 4. Metadata file
 
 #--- All downstream analysis to generate final figures are provided in four files
-Figure1-2_Alpha-Beta-diversity.R
-Figure3A_and5.R
-Figure3B.R
-Figure4_new.R
+1. Figure1-2_Alpha-Beta-diversity.R
+2. Figure3A_and5.R
+3. Figure3B.R
+4. Figure4_new.R
