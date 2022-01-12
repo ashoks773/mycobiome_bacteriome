@@ -362,9 +362,9 @@ Correlation_shann <- corr.test(Total_Fungal_Bacterial_Diversity$BAC.shannon, Tot
 #qiime diversity procrustes-analysis --i-reference 16s/core-metrics-results_rare1k/bray_curtis_pcoa_results.qza --i-other ITS/core-metrics-results_rare1k/bray_curtis_pcoa_results.qza --p-dimensions 2 --output-dir Procrustes_results
 #qiime emperor procrustes-plot --i-reference-pcoa 16s/core-metrics-results_rare1k/bray_curtis_pcoa_results.qza --i-other-pcoa ITS/core-metrics-results_rare1k/bray_curtis_pcoa_results.qza --m-metadata-file Metadata_filtered.tsv --o-visualization procrustes.qzv --p-ignore-missing-samples
 
-#------#------ Procustes on rarefied data to check the scores and significance
+#------#------ Procustes analysis to check the scores and significance
 #--- Bray-curtis distance matrices for this analysis
-setwd("~/Work/Project_16S_ITS/Combined/Rarefied_1k_for_alpha_beta-diversity/Procrustes")
+setwd("~/Work/Project_16S_ITS/Combined/Procrustes")
 ITS_dist_bray_qiime <- read.csv("ITS_Bray_distance-matrix.tsv", sep = "\t", row.names = 1)
 BAC_dist_bray_qiime <- read.csv("16S_Bray_distance-matrix.tsv", sep = "\t", row.names = 1)
 
