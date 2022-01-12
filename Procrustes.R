@@ -12,16 +12,19 @@ library(tidyverse)
 library(gapminder)
 library (phyloseq)
 library(Evomorph)
-
+library (reshape2)
 
 #---- Using this Tutorial
 #http://evomics.org/wp-content/uploads/2016/01/phyloseq-Lab-Section-01-Main-Lab.html
 
-#-- For All
+#-- For All (These distances both ITS_bray_dist and BAC_bray_dist are coming from Figure1-2_Alpha-Beta R Script)
 ITS_bray_dist <- as.matrix(ITS_bray_dist)
 BAC_bray_dist <- as.matrix(BAC_bray_dist)
 ITS_bray_dist <- data.frame(ITS_bray_dist)
 BAC_bray_dist <- data.frame(BAC_bray_dist)
+
+#https://rdrr.io/cran/Evomorph/man/ShapeDist.html
+#Procrustes distance provides a measure of coincidence of two point sets xi and yi, i=1..N. For this purpose the variance of point deviations is calculated at the optimal superposition of the sets. It allows to characterize the shape proximity of a given simplex to shape of a reference one.
 total_Distances <- ShapeDist(shapes = ITS_bray_dist, reference = BAC_bray_dist)
 
 total_Distances <- data.frame(total_Distances)
@@ -32,9 +35,36 @@ row.names(Distances_new) <- Distances_new$row
 
 Distances_new_meta <- merge(Distances_new, ITSmeta, by=0, all=F)
 rownames(Distances_new_meta) <- Distances_new_meta$Row.names; Distances_new_meta$Row.names <- NULL
-boxplot(Distances_new_meta$total_Distances ~ Distances_new_meta$Group)
 
+#write.table(Distances_new_meta, file="Procrustes_Distances.txt", sep = "\t")
+Colors <- c("forestgreen", "darkgray", "darkgoldenrod3", "chartreuse1", "purple3", "darkmagenta", "blue", "darkcyan", "darkorchid1", "darkred")
 
+procrustes_Dist <- Distances_new_meta[,c(2,7)]
+procrustes_Dist_melted <- melt(procrustes_Dist, id.vars = "Group")
+
+jpeg("Procrustes_Dist.jpg", height = 4, width = 6, units = 'in', res = 600)
+ggplot(data = procrustes_Dist_melted, aes(x=reorder(Group, value, FUN=median), y=value, fill=Group)) + geom_boxplot() + geom_jitter(width = 0.2) + ggtitle("") + labs(x="",y="Procrustes distance") + theme_classic() + scale_color_manual(values=Colors) + scale_fill_manual(values=Colors) + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(legend.text = element_text(colour="black", size=12)) + theme(legend.title = element_blank()) + theme(legend.position='none') + theme(axis.text.x = element_text(size = 12, colour = "black"), axis.text.y = element_text(size = 12, colour = "black"))
+dev.off ()
+
+######################### ********************************
+#--- For Reviewer 3 Remove Captive Hodonin and Plot this GAIN
+Distances_new_meta <- read.csv(file="Procrustes_Distances.txt", sep = "\t", row.names = 1, header = T)
+Distances_new_meta <- subset(Distances_new_meta, Group != "Captive Chimps-Hodonin")
+#Colors <- c("forestgreen", "darkgray", "darkgoldenrod3", "chartreuse1", "purple3", "darkmagenta", "blue", "darkcyan", "darkorchid1", "darkred")
+Colors <- c("forestgreen", "darkgray", "chartreuse1", "purple3", "darkmagenta", "blue", "darkcyan", "darkorchid1", "darkred")
+
+procrustes_Dist <- Distances_new_meta[,c(2,7)]
+procrustes_Dist_per = data.frame (procrustes_Dist$total_Distances/100) #-- Intially Distance scale was from 1-100/ I converted that from 0-1
+procrustes_Dist_per_meta <- cbind (procrustes_Dist_per, procrustes_Dist$Group)
+colnames(procrustes_Dist_per_meta) <- c("Procrustes distance", "Group")
+procrustes_Dist_melted <- melt(procrustes_Dist_per_meta, id.vars = "Group")
+
+jpeg("Figure3D.jpg", height = 4, width = 6, units = 'in', res = 600)
+ggplot(data = procrustes_Dist_melted, aes(x=reorder(Group, value, FUN=median), y=value, fill=Group)) + geom_boxplot() + geom_jitter(width = 0.2) + ggtitle("") + labs(x="",y="Procrustes distance") + theme_classic() + scale_color_manual(values=Colors) + scale_fill_manual(values=Colors) + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(legend.text = element_text(colour="black", size=12)) + theme(legend.title = element_blank()) + theme(legend.position='none') + theme(axis.text.x = element_text(size = 12, colour = "black"), axis.text.y = element_text(size = 12, colour = "black"))
+dev.off ()
+
+########
+kruskalmc(Distances_new_meta$total_Distances ~ Distances_new_meta$Group)
 
 #------ Trying Procrustes for Each Group
 # https://stackoverflow.com/questions/30325739/ggplot2-for-procrustes-rotation-in-vegan
@@ -221,6 +251,7 @@ ggplot(ctest) +
   geom_segment(aes(x=rda1,y=rda2,xend=xrda1,yend=xrda2,colour=Group),arrow=arrow(length=unit(0.15,"cm")))
 dev.off ()
 
+protest (CWLG_ITS_bray_dist, CWLG_Bac_bray_dist, permutations = 999)
 protest (CWLG_Bac_bray_dist, CWLG_ITS_bray_dist, permutations = 999)
 mantel(CWLG_ITS_bray_dist, CWLG_Bac_bray_dist, permutations = 999)
 #Mantel statistic r: -0.4475, Significance: 0.66667
