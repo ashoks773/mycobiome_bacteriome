@@ -125,20 +125,27 @@ The following files were used for downstream statistical analysis
 The following R scripts were used for generating figures and statistical analyses:
 - **Alpha and Beta Diversity**: `Figure1-2_Alpha-Beta-diversity.R`
 - **Bacterial Fungal correlation**: `Figure3A_and5.R`
-- **Network statistics**: `Figure3B.R`
-- **Network analysis**: `Figure4_new.R`
+- **Network analysis and statistics**: `Figure3B.R` and `Figure4_new.R`
 - **Taxonomy Plots**:
   - Bacteria: `Bacteria_Taxonomy_plots.R`
   - Fungi: `Fungi_Taxonomy_plots.R`
 - **Network Analysis**:
   - `Network_Stats.R`
   - `Network_attributes.R`
+For detailed analysis workflows and figure generation, refer to the scripts in the `scripts/` directory.
 
 ## References
 - Qiime2 Documentation: [https://docs.qiime2.org](https://docs.qiime2.org)
-- For Databases: [https://docs.qiime2.org/2024.10/data-resources/] (https://docs.qiime2.org/2024.10/data-resources/) 
-- GreenGenes Database for Bacterial Taxonomy: [https://ftp.microbio.me/greengenes_release] (https://ftp.microbio.me/greengenes_release)
+- For Databases: [https://docs.qiime2.org/2024.10/data-resources/](https://docs.qiime2.org/2024.10/data-resources/) 
+- GreenGenes Database for Bacterial Taxonomy: [https://ftp.microbio.me/greengenes_release](https://ftp.microbio.me/greengenes_release)
 - UNITE Database for Fungal Taxonomy: [https://unite.ut.ee](https://unite.ut.ee)
+
+## Citation
+If you use this repository, please cite the original research article.
+If you want to access the publication, here is the title and link: [https://www.nature.com/articles/s41522-022-00274-3](https://www.nature.com/articles/s41522-022-00274-3)
 
 ## Contact
 For any queries, please reach out via compbiosharma@gmail.com OR ashoks773@gmail.com
+
+---
+This README provides an overview of the dataset and analysis pipeline. For further details, refer to individual scripts and data files.
