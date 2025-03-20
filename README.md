@@ -124,6 +124,9 @@ The following files were used for downstream statistical analysis
 ## Downstream Statistical Analysis
 The following R scripts were used for generating figures and statistical analyses:
 - **Alpha and Beta Diversity**: `Figure1-2_Alpha-Beta-diversity.R`
+- **Bacterial Fungal correlation**: `Figure3A_and5.R`
+- **Network statistics**: `Figure3B.R`
+- **Network analysis**: `Figure4_new.R`
 - **Taxonomy Plots**:
   - Bacteria: `Bacteria_Taxonomy_plots.R`
   - Fungi: `Fungi_Taxonomy_plots.R`
@@ -133,8 +136,9 @@ The following R scripts were used for generating figures and statistical analyse
 
 ## References
 - Qiime2 Documentation: [https://docs.qiime2.org](https://docs.qiime2.org)
-- GreenGenes Database: [http://greengenes.secondgenome.com](http://greengenes.secondgenome.com)
+- For Databases: [https://docs.qiime2.org/2024.10/data-resources/] (https://docs.qiime2.org/2024.10/data-resources/) 
+- GreenGenes Database for Bacterial Taxonomy: [https://ftp.microbio.me/greengenes_release] (https://ftp.microbio.me/greengenes_release)
 - UNITE Database for Fungal Taxonomy: [https://unite.ut.ee](https://unite.ut.ee)
 
 ## Contact
-For any queries, please reach out via compbiosharma@gmail.com.
+For any queries, please reach out via compbiosharma@gmail.com OR ashoks773@gmail.com
