@@ -140,11 +140,8 @@ For detailed analysis workflows and figure generation, refer to the scripts in t
 - GreenGenes Database for Bacterial Taxonomy: [https://ftp.microbio.me/greengenes_release](https://ftp.microbio.me/greengenes_release)
 - UNITE Database for Fungal Taxonomy: [https://unite.ut.ee](https://unite.ut.ee)
 
-## Citation
-If you use this repository, please cite the original research article.
-If you want to access the publication, here is the title and link: [https://www.nature.com/articles/s41522-022-00274-3](https://www.nature.com/articles/s41522-022-00274-3)
-
 ## Contact
+If you want to access the publication, here is the title and link: [https://www.nature.com/articles/s41522-022-00274-3](https://www.nature.com/articles/s41522-022-00274-3)
 For any queries, please reach out via compbiosharma@gmail.com OR ashoks773@gmail.com
 
 ---
